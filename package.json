@@ -1,0 +1,19 @@
+{
+  "name": "webhook-signature-validator",
+  "version": "1.0.0",
+  "description": "Console application for validating webhook signatures",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cduggan-reapit/webhook-signature-validator-cs.git"
+  },
+  "license": "UNLICENSED",
+  "author": "Craig Duggan",
+  "scripts": {
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "husky": "^9.1.7"
+  }
+}

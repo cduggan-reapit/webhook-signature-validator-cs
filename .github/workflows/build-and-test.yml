@@ -1,0 +1,32 @@
+name: Build
+on: 
+  - push
+
+jobs:
+  build:
+    name: build project
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📩 checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: ⚙️ setup dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: 🔨 build solution
+        working-directory: src
+        run: |
+          dotnet restore
+          dotnet format --no-restore --verify-no-changes
+          dotnet build --no-restore
+
+      # No tests right now... 
+      - name: 🧪 run tests
+        if: ${{ false }}
+        working-directory: src
+        run: |
+          dotnet test --no-build --collect:"XPLat Code Coverage"

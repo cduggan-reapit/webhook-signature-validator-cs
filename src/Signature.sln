@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{590A8C9E-B6AB-45C7-93D7-ED7FB5019E91}"
+	ProjectSection(SolutionItems) = preProject
+		..\readme.md = ..\readme.md
+		..\.editorconfig = ..\.editorconfig
+		..\.gitignore = ..\.gitignore
+		..\package.json = ..\package.json
+		..\.commitlintrc.yml = ..\.commitlintrc.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Signature", "Signature/Signature.csproj", "{F25DFAEB-F741-4F67-A62E-BC0A354D7863}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".husky", ".husky", "{DB7C518E-6932-4A82-8E80-234632E37D93}"
+	ProjectSection(SolutionItems) = preProject
+		..\.husky\commit-msg = ..\.husky\commit-msg
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{4C1C81AB-5A64-457E-A552-B781A19BD3C8}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\CODEOWNERS = ..\.github\CODEOWNERS
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{55D0AD2A-E1B9-4A08-94D8-12AA836CDB84}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\build-and-test.yml = ..\.github\workflows\build-and-test.yml
+		..\.github\workflows\commit-linting.yml = ..\.github\workflows\commit-linting.yml
+		..\.github\workflows\publish-release.yml = ..\.github\workflows\publish-release.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F25DFAEB-F741-4F67-A62E-BC0A354D7863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F25DFAEB-F741-4F67-A62E-BC0A354D7863}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F25DFAEB-F741-4F67-A62E-BC0A354D7863}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F25DFAEB-F741-4F67-A62E-BC0A354D7863}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DB7C518E-6932-4A82-8E80-234632E37D93} = {590A8C9E-B6AB-45C7-93D7-ED7FB5019E91}
+		{4C1C81AB-5A64-457E-A552-B781A19BD3C8} = {590A8C9E-B6AB-45C7-93D7-ED7FB5019E91}
+		{55D0AD2A-E1B9-4A08-94D8-12AA836CDB84} = {4C1C81AB-5A64-457E-A552-B781A19BD3C8}
+	EndGlobalSection
+EndGlobal
