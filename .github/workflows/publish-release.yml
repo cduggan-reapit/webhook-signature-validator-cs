@@ -25,8 +25,16 @@ jobs:
           sudo apt update
           sudo apt install zip
 
+      # There's a few commands in a row here, let's explain them:
+      # Create a self-contained exe - this will be quite big as it includes the runtime
+      # Move that file from Signature.exe to Signature.bundle.exe
+      # Create the exe without the embedded runtime, which will be a lot smaller (~10x)
+      # Copy the readme into the 'publish' directory
+      # Navigate to that directory & zip up it's contents (ignoring the .pdb file)
       - name: 🪄 publish executable
-        run: | 
+        run: |
+          dotnet publish ./src/Signature/Signature.csproj --runtime win-x64 --configuration Release --output publish/win64 --self-contained /p:PublishSingleFile=true
+          mv publish/win64/Signature.exe publish/win64/Signature.bundle.exe
           dotnet publish ./src/Signature/Signature.csproj --runtime win-x64 --configuration Release --output publish/win64 --no-self-contained /p:PublishSingleFile=true
           cp readme.md publish/win64/readme.md
           cd publish/win64
