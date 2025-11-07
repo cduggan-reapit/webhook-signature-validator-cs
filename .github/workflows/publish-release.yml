@@ -22,8 +22,8 @@ jobs:
       
       - name: 🏗️ install packages
         run: |
-          sudo apt update && \
-          apt install zip
+          sudo apt update
+          sudo apt install zip
 
       - name: 🪄 publish executable
         run: | 
