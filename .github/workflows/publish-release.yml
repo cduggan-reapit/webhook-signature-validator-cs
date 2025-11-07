@@ -19,12 +19,22 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
+      
+      - name: 🏗️ install packages
+        run: |
+          apt update &&
+          apt install zip
 
       - name: 🪄 publish executable
-        run: dotnet publish ./src/Signature/Signature.csproj --runtime win-x64 --configuration Release --output publish/win64 --no-self-contained /p:PublishSingleFile=true
+        run: | 
+          dotnet publish ./src/Signature/Signature.csproj --runtime win-x64 --configuration Release --output publish/win64 --no-self-contained /p:PublishSingleFile=true
+          cp readme.md publish/win64/readme.md
+          cd publish/win64
+          zip ../../win64.zip * -x *.pdb
+        
       - name: 💾 upload release executable
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo ${{ github.ref_name }}
-          gh release upload "${{ github.ref_name }}" ./publish/win64/Signature.exe
+          gh release upload "${{ github.ref_name }}" win64.zip
