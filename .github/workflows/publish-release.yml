@@ -35,7 +35,7 @@ jobs:
           dotnet publish ./src/Signature/Signature.csproj --runtime win-x64 --output publish
           cp readme.md publish/readme.md
           cd publish
-          zip "signature-v${{ github.ref_name }}.zip" *
+          zip "../signature-v${{ github.ref_name }}.zip" *
         
       - name: 💾 upload release executable
         env:
