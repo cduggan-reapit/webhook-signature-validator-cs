@@ -39,5 +39,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           dotnet publish ./src/Signature/Signature.csproj --runtime win-x64 --configuration Release --output publish/win64 --no-self-contained /p:PublishSingleFile=true
-          echo ${{ github.ref }}
-          gh release upload "${{ github.ref }}" ./publish/win64/Signature.exe
+          echo ${{ github.ref_name }}
+          gh release upload "${{ github.ref_name }}" ./publish/win64/Signature.exe
