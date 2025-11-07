@@ -26,23 +26,20 @@ jobs:
           sudo apt install zip
 
       # There's a few commands in a row here, let's explain them:
-      # Create a self-contained exe - this will be quite big as it includes the runtime
-      # Move that file from Signature.exe to Signature.bundle.exe
-      # Create the exe without the embedded runtime, which will be a lot smaller (~10x)
-      # Copy the readme into the 'publish' directory
-      # Navigate to that directory & zip up it's contents (ignoring the .pdb file)
+      # Publish windows x64 artifact
+      # Copy the readme
+      # Move into the 'publish' directory
+      # Zip all the files
       - name: 🪄 publish executable
         run: |
-          dotnet publish ./src/Signature/Signature.csproj --runtime win-x64 --configuration Release --output publish/win64 --self-contained /p:PublishSingleFile=true
-          mv publish/win64/Signature.exe publish/win64/Signature.bundle.exe
-          dotnet publish ./src/Signature/Signature.csproj --runtime win-x64 --configuration Release --output publish/win64 --no-self-contained /p:PublishSingleFile=true
-          cp readme.md publish/win64/readme.md
-          cd publish/win64
-          zip ../../win64.zip * -x *.pdb
+          dotnet publish ./src/Signature/Signature.csproj --runtime win-x64 --output publish
+          cp readme.md publish/readme.md
+          cd publish
+          zip ../signature.zip *
         
       - name: 💾 upload release executable
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo ${{ github.ref_name }}
-          gh release upload "${{ github.ref_name }}" win64.zip
+          gh release upload "${{ github.ref_name }}" signature.zip
