@@ -30,3 +30,16 @@ jobs:
         working-directory: src
         run: |
           dotnet test --no-build --collect:"XPLat Code Coverage"
+          
+      - name: 🔮 build branch executable
+        run: dotnet publish ./src/Signature/Signature.csproj --runtime win-x64 --configuration Release --output publish/win64 --no-self-contained /p:PublishSingleFile=true
+
+      - name: 💾 upload executable to workflow
+        uses: actions/upload-artifact@v4
+        with:
+          name: "signature-win64.exe"
+          path: "publish/win64/Signature.exe"
+          if-no-files-found: 'error'
+          retention-days: 90
+          compression-level: 0
+          overwrite: 'true'
