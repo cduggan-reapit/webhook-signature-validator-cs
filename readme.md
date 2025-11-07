@@ -2,6 +2,10 @@
 
 A simple console application intended to make it easier to test webhook signature values.
 
+## Links
+
+- [Releases](https://github.com/cduggan-reapit/webhook-signature-validator-cs/releases)
+
 ## Usage
 
 ```cmd
