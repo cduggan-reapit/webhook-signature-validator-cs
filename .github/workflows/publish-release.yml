@@ -22,7 +22,7 @@ jobs:
       
       - name: 🏗️ install packages
         run: |
-          apt update &&
+          sudo apt update && \
           apt install zip
 
       - name: 🪄 publish executable
